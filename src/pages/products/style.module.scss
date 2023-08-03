@@ -4,6 +4,9 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 50px;
+    a {
+      color: black;
+    }
   }
   &_img {
     border-radius: 10px 10px 0 0;
@@ -20,23 +23,20 @@
     position: relative;
     z-index: 22;
     &:hover {
-      //   transform: scale(1.03);
+      // transform: scale(1.03);
       .product_view {
         a {
           opacity: 1;
         }
       }
-      .product_text {
-        // padding: 30px 25px;
-      }
       img {
         transform: scale(0.95);
         background-color: #f9a620;
-        padding: 5px !important;
+        // padding: 5px !important;
       }
     }
     img {
-      padding-bottom: 15px !important;
+      padding: 5px !important;
       border-radius: 10px;
       transition: 0.3s;
     }
@@ -71,7 +71,7 @@
       transition: 0.3s;
       border: 1px solid transparent;
       &:hover {
-        background: white;
+        background: transparent;
         color: black;
         border: 1px solid black;
       }
