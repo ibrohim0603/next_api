@@ -40,7 +40,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -51,7 +51,7 @@ export const getStaticProps = async (context: any) => {
 };
 
 export default function Single({ params }: any) {
-  const id = params.id;
+  const id = params?.id;
 
   const [mal, setMal] = useState<Det | null>(null);
   console.log(mal);

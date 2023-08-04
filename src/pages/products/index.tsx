@@ -32,6 +32,15 @@ export default function AllProducts() {
         setMal(data);
       });
   }, []);
+  setInterval(() => {
+    const data = fetch("http://localhost:3000/api")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setMal(data);
+      });
+  }, 5000);
   console.log(mal?.products);
 
   return (
@@ -53,17 +62,15 @@ export default function AllProducts() {
                     <Image
                       src={e.img}
                       quality={100}
-                      width={450}
-                      height={250}
+                      width={250}
+                      height={150}
                       alt={e.name}
                     />
                   </div>
                   <div className={s.product_text}>
                     <h3>{e.name}</h3>
                     <p>
-                      {e.title.length > 60
-                        ? `${e.title.slice(0, 50)} ... `
-                        : e.title}{" "}
+                      {e.title > 60 ? `${e.title.slice(0, 50)} ... ` : e.title}{" "}
                     </p>
                     <div className={s.product_price}>
                       <div>
