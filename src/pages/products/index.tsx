@@ -11,7 +11,7 @@ interface Products {
 interface Det {
   id: string;
   name: string;
-  title: string;
+  title: string | any;
   brand: string;
   price: number;
   color: string;
