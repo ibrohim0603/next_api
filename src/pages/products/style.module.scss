@@ -20,6 +20,10 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     transition: 0.3s;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     position: relative;
     z-index: 22;
     &:hover {

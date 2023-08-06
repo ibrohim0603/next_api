@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-};
 
-module.exports = {
+const nextConfig = {
   images: {
-    domains: ["olcha.uz"],
+    domains: ["cdn.macbro.uz"],
   },
 };
-
-// module.exports = nextConfig;
+module.exports = nextConfig;
+// export default function Config() {
+//   return <div>next.config</div>;
+// }

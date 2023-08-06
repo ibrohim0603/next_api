@@ -46,6 +46,7 @@ export default function AllProducts() {
                 <div className={s.product_card}>
                   <div className={s.product_img}>
                     <Image
+                      // loader={() => src}
                       src={e.img}
                       quality={100}
                       width={250}
@@ -55,9 +56,7 @@ export default function AllProducts() {
                   </div>
                   <div className={s.product_text}>
                     <h3>{e.name}</h3>
-                    <p>
-                      {e.title > 60 ? `${e.title.slice(0, 50)} ... ` : e.title}{" "}
-                    </p>
+                    <p>{e.title.slice(0, 40)}</p>
                     <div className={s.product_price}>
                       <div>
                         <h5>{e.price + e.price * 0.1} $</h5>
