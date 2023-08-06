@@ -1,92 +1,244 @@
-import React from "react";
-import { useState } from "react";
-const Todos = () => {
-  const [brand, setBrand] = useState("Dell");
-  const [name, setName] = useState("Dell");
-  const [title, setTitle] = useState("naidueam");
-  const [description, setDescription] = useState("hirakor");
-  const [price, setPrice] = useState("1000");
-  const [img, setImg] = useState(
-    "data:image/jpeg;base64,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"
-  );
-  const addTodo = () => {
-    fetch(
-      "https://crudcrud.com/api/408567b2778d45128f07d2ebe8825c12/products/",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          brand,
-          name,
-          title,
-          description,
-          price,
-          img,
-        }),
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    ).catch((e) => console.log(e));
-  };
+import Head from "next/head";
+
+import { useForm } from "react-hook-form";
+import s from "./postProduct.module.scss";
+import c from "./stylee.module.scss";
+import { instance } from "@/utils";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+
+export default function PostProductPage() {
+  const query = useRouter();
+  console.log(query);
+
+  const [info, setInfo] = useState("#516391");
+  const {
+    register,
+    handleSubmit,
+    control,
+
+    formState: { errors, isSubmitting },
+  } = useForm({
+    // defaultValues: {
+    //   name: '',
+    //   brand: "apple",
+    //   title: "jkdfiw",
+    //   description: "sdks",
+    //   price: "1000",
+    //   country: "US",
+    //   color: "#516391",
+    //   size: 15,
+    //   img: "data:image/png;base64,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",
+    // },
+  });
+  const onSubmit = (data: any) =>
+    instance
+      .post("/products", {
+        ...data,
+        price: Number(data.price),
+        size: Number(data.size),
+      })
+      .then((res) => {
+        res.status == 201
+          ? toast.success("Продукт добавлен")
+          : toast.error("Ошибка при добавлении продукта"),
+          setInfo(data);
+      });
+
+  const [val, setVal] = React.useState(50);
 
   return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          addTodo();
-        }}
-      >
-        <input
-          name="brand"
-          placeholder="Add new brand..."
-          value={brand}
-          onChange={(e) => setBrand(e.target.value)}
-        ></input>
-        <br />
+    <div className={c.div}>
+      <Head>
+        <title>Create products page</title>
+        <meta name="description" content={`Create products page`} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ToastContainer />
+      <div className={c.form}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h1>Form</h1>
 
-        <input
-          name="brand"
-          placeholder="Add new name..."
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        ></input>
-        <br />
+          <div>
+            <label>
+              <span>Название продукта</span>
+              {errors["name"] && <p role="alert">{errors["name"]?.message}</p>}
+              <input
+                {...register("name", {
+                  required: "Please fill in this field.",
+                })}
+                aria-invalid={errors["name"] ? "true" : "false"}
+                placeholder="Введите название продукта"
+                type="text"
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              <span> Выберите категорию</span>
+              <select
+                {...register("category", {
+                  required: "Please select an item in the list.",
+                })}
+                aria-invalid={errors["category"] ? "true" : "false"}
+              >
+                <option value="Все">Все</option>
+                <option value="Телефоны">Телефоны</option>
+                <option value="Компютеры">Компютеры</option>
+                <option value="Телевизоры">Телевизоры</option>
+                <option value="Часы">Часы</option>
+                <option value="Электроника">Электроника</option>
+              </select>
+              {errors["category"] && (
+                <p role="alert">{errors["category"]?.message}</p>
+              )}
+            </label>
+          </div>
+          <div>
+            {errors["brand"] && <p role="alert">{errors["brand"]?.message}</p>}
+            <label>
+              <span>Брэнд</span>
+              <input
+                {...register("brand", {
+                  required: true,
+                })}
+                aria-invalid={errors["brand"] ? "true" : "false"}
+                placeholder="Видите бренд продукта"
+                type="text"
+              />
+            </label>
+          </div>
 
-        <input
-          name="brand"
-          placeholder="Add new title..."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        ></input>
-        <br />
+          <div>
+            <label>
+              <span>Кратко опишите продукт</span>
+              {errors["title"] && (
+                <p role="alert">{errors["title"]?.message}</p>
+              )}
+              <input
+                {...register("title", {
+                  required: "Заполните это поле",
+                  maxLength: {
+                    value: 120,
+                    message: "Пожалуйста введите меньше 120 символов",
+                  },
+                })}
+                aria-invalid={errors["title"] ? "true" : "false"}
+                placeholder="Напишите кратко о продукте"
+                type="text"
+              />
+            </label>
+          </div>
 
-        <input
-          name="brand"
-          placeholder="Add new description..."
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></input>
-        <br />
-        <input
-          name="brand"
-          placeholder="Add new price..."
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        ></input>
-        <br />
-        <input
-          name="brand"
-          placeholder="Add new img..."
-          value={img}
-          onChange={(e) => setImg(e.target.value)}
-        ></input>
-        <br />
+          <div>
+            <label>
+              <span>Полностью опишите ваш продукт </span>
+              {errors["description"] && (
+                <p role="alert">{errors["description"]?.message}</p>
+              )}
+              <textarea
+                {...register("description", {
+                  required: "Опишите ваш товар подробно",
+                })}
+                placeholder="Опишите ваш продукт полностью"
+                type="textarea"
+              />
+            </label>
+          </div>
 
-        <button type="submit">Add todo</button>
-      </form>
+          <div>
+            <label>
+              <span>Цена</span>
+              {errors["price"] && (
+                <p role="alert">{errors["price"]?.message}</p>
+              )}
+              <input
+                {...register("price", {
+                  required: "Видите стоимость продукта в цифрах",
+                })}
+                aria-invalid={errors["price"] ? "true" : "false"}
+                placeholder="Видите стоимость продукта"
+                type="number"
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <span> Выберите страну</span>
+              <select
+                {...register("country", {
+                  required: "Please select an item in the list.",
+                })}
+                aria-invalid={errors["country"] ? "true" : "false"}
+              >
+                <option value="CH">CH</option>
+                <option value="RU">RU</option>
+                <option value="UZ">UZ</option>
+                <option value="UK">UK</option>
+                <option value="US">US</option>
+              </select>
+              {errors["country"] && (
+                <p role="alert">{errors["country"]?.message}</p>
+              )}
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <span>Цвет вашего продукта</span>
+              <input
+                style={{ backgroundColor: `${info}` }}
+                {...register("color")}
+                type="color"
+                onChange={(e) => setInfo(e.target.value)}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <span>Введите примерный размер вашего продукта</span>
+              <input
+                {...register("size")}
+                min="1"
+                max="100"
+                step="1"
+                type="range"
+                onChange={(e: any) => setVal(e.target.value)}
+              />
+              <output>{val}</output>
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <span>Введите URL фотографии</span>
+              {errors["img"] && <p role="alert">{errors["img"]?.message}</p>}
+              <input
+                {...register("img", {
+                  required:
+                    "Пример заполнения https://cdn.macbro.uz/macbro/3fc64c8e-b904-4dc2-b7cc-b187399539ab",
+                })}
+                placeholder="Введите URL фотографии"
+                type="url"
+              />
+            </label>
+          </div>
+
+          <button disabled={isSubmitting}>Submit</button>
+        </form>
+        {/* <div
+          id="beekai"
+          data-type="form"
+          data-id="8104a746-0dcc-48b8-bf2c-ec3609b634dc"
+          data-text="Form"
+        ></div> */}
+      </div>
     </div>
   );
-};
-
-export default Todos;
+}
