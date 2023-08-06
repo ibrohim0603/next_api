@@ -28,9 +28,10 @@ export default function handler(
   if (req.method == "GET") {
     res.status(200).json({ products: prod, total: prod.length, made: fil });
   } else if (req.method == "POST") {
-    prod.push({ ...req.body, id: `${prod.length + 1}` });
+    prod.push({ ...req.body });
     res
       .status(201)
       .json({ product: { ...req.body, id: `${prod.length + 1}` } });
+  } else if (req.method == "PATCH" || req.method == "PUT") {
   }
 }

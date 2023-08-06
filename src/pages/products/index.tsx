@@ -4,12 +4,14 @@ import s from "./style.module.scss";
 import Link from "next/link";
 import cart from "../../../public/cart-plus-solid.svg";
 import Head from "next/head";
+import { instance } from "@/utils";
 
 interface Products {
-  products: Det[];
+  products: Detail[];
+  map: any;
 }
-interface Det {
-  id: string;
+interface Detail {
+  _id: string;
   name: string;
   title: string | any;
   brand: string;
@@ -24,25 +26,9 @@ export default function AllProducts() {
   const [mal, setMal] = useState<Products | null>(null);
 
   useEffect(() => {
-    const data = fetch("http://localhost:3000/api")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setMal(data);
-      });
+    const data = instance.get("/products").then((res) => setMal(res?.data));
+    // const s = instance.delete("/products/64cf4d911565ae03e8473c02");
   }, []);
-  setInterval(() => {
-    const data = fetch("http://localhost:3000/api")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setMal(data);
-      });
-  }, 5000);
-  console.log(mal?.products);
-
   return (
     <>
       <Head>
@@ -54,9 +40,9 @@ export default function AllProducts() {
       <div className={s.product}>
         AllProducts
         <div className={s.product_flex}>
-          {mal?.products.map((e) => (
-            <Link href={`products/${e.id}`} key={e.id}>
-              <a>
+          {mal?.map((e: Detail) => (
+            <div key={e._id}>
+              <Link href={`products/${e._id}`}>
                 <div className={s.product_card}>
                   <div className={s.product_img}>
                     <Image
@@ -78,20 +64,20 @@ export default function AllProducts() {
                         <h3>{e.price} $</h3>
                       </div>
                       <div>
-                        <Link href={`/products/${e.id}`}>
+                        <Link href={`/products/${e._id}`}>
                           <a>Buy</a>
                         </Link>
                       </div>
                     </div>
                     <div className={s.product_view}>
-                      <Link href={`/products/${e.id}`}>
+                      <Link href={`/products/${e._id}`}>
                         <a>Увидеть продукт подробнее</a>
                       </Link>
                     </div>
                   </div>
                 </div>
-              </a>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </div>

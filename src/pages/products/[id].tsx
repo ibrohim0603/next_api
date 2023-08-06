@@ -4,12 +4,10 @@ import { useRouter } from "next/router";
 import s from "./single.module.scss";
 import Image from "next/image";
 import Head from "next/head";
+import { instance } from "@/utils";
 
-interface Products {
-  products: Det[];
-}
-interface Det {
-  id: string;
+interface ProductType {
+  _id: string;
   name: string;
   title: string | any;
   brand: string;
@@ -21,50 +19,20 @@ interface Det {
   img: string;
 }
 
-type Repo = {
-  name: string;
-  stargazers_count: number;
-};
+export default function Single() {
+  const { query } = useRouter();
 
-export const getStaticPaths = async () => {
-  const res = await fetch(`http://localhost:3000/api`);
-  const repo = await res.json();
-
-  const paths = repo?.products?.map((p: any) => {
-    return {
-      params: {
-        id: `${p?.id}`,
-      },
-    };
-  });
-
-  return {
-    paths,
-    fallback: true,
-  };
-};
-
-export const getStaticProps = async (context: any) => {
-  const { params } = context;
-
-  return { props: { params } };
-};
-
-export default function Single({ params }: any) {
-  const id = params?.id;
-
-  const [mal, setMal] = useState<Det | null>(null);
-  console.log(mal);
+  const [mal, setMal] = useState<ProductType | null>(null);
 
   useEffect(() => {
-    const data = fetch(`http://localhost:3000/api/${id}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setMal(data?.product);
-      });
-  }, [id]);
+    if (query?.id) {
+      const data = instance
+        .get(`/products/${query?.id}`)
+        .then((data) => setMal(data?.data));
+    }
+  }, [query?.id]);
+
+  console.log(query?.id);
 
   return (
     <>
@@ -85,12 +53,12 @@ export default function Single({ params }: any) {
             </div>
             <div className={s.single_info}>
               <div>
-                <p> Уникальное значение : _{mal?.id}</p>
+                <p> Уникальное значение : _{mal?._id}</p>
               </div>
               <div></div>
               <div>
                 <p>
-                  {mal?.title.length > 100
+                  {mal?.title?.length > 100
                     ? `${mal?.title.slice(0, 100)} ... `
                     : mal?.title}{" "}
                 </p>
@@ -139,13 +107,3 @@ export default function Single({ params }: any) {
     </>
   );
 }
-
-// id: string;
-// name: string;
-// title: string;
-// brand: string;
-// price: number;
-// color: string;
-// country: string;
-// size: number;
-// img: string;
