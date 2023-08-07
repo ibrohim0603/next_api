@@ -2,12 +2,23 @@
   width: 90%;
   height: 90vh;
   margin: 5% auto;
+  &_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   &_card {
     display: flex;
     flex-direction: column;
     gap: 100px;
     height: 100%;
     div:nth-child(1) {
+      div:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+      }
       h1 {
         align-items: baseline;
         color: #000;
@@ -43,13 +54,17 @@
     height: 100%;
     gap: 25px;
     width: 100%;
+    background-color: #477890;
+    border-radius: 10px;
+    padding: 20px;
     div:nth-child(1) {
       display: flex;
+
       p {
         display: flex;
         justify-content: space-between;
         gap: 10px;
-        color: #000;
+        color: #ffffff;
       }
     }
     div:nth-child(2) {
@@ -62,9 +77,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: #494747a8;
+        color: #e4e2e2a8;
         span {
-          color: black;
+          color: #ffffff;
         }
       }
     }
@@ -73,10 +88,12 @@
     border: 1px solid #fed766;
     height: 100%;
     width: 100%;
+    background-color: #fed766;
     padding: 20px 3%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    padding: 20px;
     gap: 30px;
     h3 {
       font-size: x-large;
@@ -109,25 +126,26 @@
         padding: 10px;
         font-size: 15px;
         border-radius: 15px;
-        border: 2px solid #fed766;
+        border: 2px solid #fafafa;
         background-color: #fed766;
         transition: 0.2s;
         color: black;
         &:hover {
           background: transparent;
-          color: #fed766;
+          border: 2px solid #477890;
+          color: #477890;
         }
       }
       button {
         padding: 10px;
         font-size: 15px;
         border-radius: 15px;
-        border: 2px solid black;
+        border: 2px solid #477890;
         background-color: transparent;
         color: black;
         transition: 0.2s;
         &:hover {
-          background: black;
+          background: #477890;
           color: #fed766;
         }
       }

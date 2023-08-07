@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 import { useForm } from "react-hook-form";
-import s from "./postProduct.module.scss";
 import c from "./stylee.module.scss";
 import { instance } from "@/utils";
 import React, { useState } from "react";
@@ -9,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+import Demo from "@/components/postModal";
 
 export default function PostProductPage() {
   const query = useRouter();
@@ -46,6 +46,9 @@ export default function PostProductPage() {
           ? toast.success("Продукт добавлен")
           : toast.error("Ошибка при добавлении продукта"),
           setInfo(data);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       });
 
   const [val, setVal] = React.useState(50);
@@ -86,7 +89,9 @@ export default function PostProductPage() {
                 })}
                 aria-invalid={errors["category"] ? "true" : "false"}
               >
-                <option value="Все">Все</option>
+                <option defaultChecked disabled autoFocus>
+                  Выбрать..
+                </option>
                 <option value="Телефоны">Телефоны</option>
                 <option value="Компютеры">Компютеры</option>
                 <option value="Телевизоры">Телевизоры</option>
@@ -232,13 +237,9 @@ export default function PostProductPage() {
 
           <button disabled={isSubmitting}>Submit</button>
         </form>
-        {/* <div
-          id="beekai"
-          data-type="form"
-          data-id="8104a746-0dcc-48b8-bf2c-ec3609b634dc"
-          data-text="Form"
-        ></div> */}
       </div>
+
+      <div></div>
     </div>
   );
 }

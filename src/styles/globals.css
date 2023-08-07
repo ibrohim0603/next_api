@@ -8,11 +8,19 @@
   box-sizing: border-box;
   font-family: "Titillium Web", sans-serif;
 }
-.body {
-  width: 30%;
-  margin: auto;
+body {
+  margin-top: 120px;
+  background-color: #dba159;
 }
 
+body .mantine-15cermj {
+  overflow-y: scroll;
+  /* max-width: 900px !important; */
+  -webkit-flex: 0 0 47.5rem;
+}
+body .mantine-Spotlight-searchInput {
+  display: none;
+}
 /* .App {
   font-family: sans-serif;
   text-align: center;

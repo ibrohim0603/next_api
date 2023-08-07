@@ -5,6 +5,8 @@ import Link from "next/link";
 import cart from "../../../public/cart-plus-solid.svg";
 import Head from "next/head";
 import { instance } from "@/utils";
+import PostModal from "@/components/postModal";
+import EditModal from "@/components/editModal";
 
 interface Products {
   products: Detail[];
@@ -38,7 +40,11 @@ export default function AllProducts() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={s.product}>
-        AllProducts
+        <div>
+          AllProducts
+          <PostModal />
+          <br />
+        </div>
         <div className={s.product_flex}>
           {mal?.map((e: Detail) => (
             <div key={e._id}>

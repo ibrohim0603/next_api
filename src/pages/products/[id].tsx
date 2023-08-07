@@ -5,6 +5,7 @@ import s from "./single.module.scss";
 import Image from "next/image";
 import Head from "next/head";
 import { instance } from "@/utils";
+import EditModal from "@/components/editModal";
 
 interface ProductType {
   _id: string;
@@ -45,9 +46,14 @@ export default function Single() {
       </Head>
       <div className={s.single}>
         <div className={s.single_card}>
-          <div>
-            <h1>{mal?.name}</h1>
-            <p> Уникальное значение : {mal?._id}</p>
+          <div className={s.single_title}>
+            <div>
+              <h1>{mal?.name}</h1>
+              <p> Уникальное значение : {mal?._id}</p>
+            </div>
+            <div>
+              <EditModal id={mal?._id} />
+            </div>
           </div>
           <div className={s.single_flex}>
             <div className={s.single_img}>
